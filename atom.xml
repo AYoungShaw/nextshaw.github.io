@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://nextshaw.github.io/</id>
-    <title>nextShaw</title>
-    <updated>2020-10-19T13:08:08.686Z</updated>
+    <title>下一个未来</title>
+    <updated>2020-10-19T14:19:42.337Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nextshaw.github.io/"/>
     <link rel="self" href="https://nextshaw.github.io/atom.xml"/>
-    <subtitle>nextShaw</subtitle>
+    <subtitle>&lt;span style=&quot;color:blue&quot;&gt;未来已来，我们还在&lt;/span&gt;</subtitle>
     <logo>https://nextshaw.github.io/images/avatar.png</logo>
     <icon>https://nextshaw.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, nextShaw</rights>
+    <rights>All rights reserved 2020, 下一个未来</rights>
+    <entry>
+        <title type="html"><![CDATA[springboot配置说明]]></title>
+        <id>https://nextshaw.github.io/post/Springboot配置文件</id>
+        <link href="https://nextshaw.github.io/post/Springboot配置文件">
+        </link>
+        <updated>2020-10-19T13:30:59.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="springboot配置说明">springboot配置说明</h2>
+<p>​		在命令行方式启动Spring Boot应用时，连续的两个减号--就是对application.properties中的属性值进行赋值的标识。所以，java -jar xxx.jar --server.port=8888命令，等价于我们在application.properties中添加属性server.port=8888。</p>
+<h3 id="多环境配置">多环境配置</h3>
+<p>​		在Spring Boot中多环境配置文件名需要满足application-{profile}.properties的格式，其中{profile}对应你的环境标识，比如：</p>
+<ul>
+<li>application-dev.properties：开发环境</li>
+<li>application-test.properties：测试环境</li>
+<li>application-prod.properties：生产环境</li>
+</ul>
+<p>至于哪个具体的配置文件会被加载，需要在application.properties文件中通过spring.profiles.active属性来设置，其值对应配置文件中的{profile}值。如：spring.profiles.active=test就会加载application-test.properties配置文件内容。</p>
+<h3 id="springboot-配置文件加载顺序">springboot 配置文件加载顺序</h3>
+<p>​		Spring Boot为了能够更合理的重写各属性的值，使用了下面这种较为特别的属性加载顺序：</p>
+<ol>
+<li>命令行中传入的参数。</li>
+<li>SPRING_APPLICATION_JSON中的属性。SPRING_APPLICATION_JSON是以JSON格式配置在系统环境变量中的内容。</li>
+<li>java:comp/env中的JNDI属性。</li>
+<li>Java的系统属性，可以通过System.getProperties()获得的内容。</li>
+<li>操作系统的环境变量</li>
+<li>通过random.*配置的随机属性</li>
+<li>位于当前应用jar包之外，针对不同{profile}环境的配置文件内容，例如：application-{profile}.properties或是YAML定义的配置文件</li>
+<li>位于当前应用jar包之内，针对不同{profile}环境的配置文件内容，例如：application-{profile}.properties或是YAML定义的配置文件</li>
+<li>位于当前应用jar包之外的application.properties和YAML配置内容</li>
+<li>位于当前应用jar包之内的application.properties和YAML配置内容</li>
+<li>在@Configuration注解修改的类中，通过@PropertySource注解定义的属性</li>
+<li>应用默认属性，使用SpringApplication.setDefaultProperties定义的内容</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://nextshaw.github.io/post/hello-gridea</id>
